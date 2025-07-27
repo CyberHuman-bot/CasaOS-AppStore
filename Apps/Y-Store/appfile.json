@@ -1,0 +1,83 @@
+{
+  "version": "2.0",
+  "title": "Y-Store",
+  "name": "y-store",
+  "icon": "https://export-download.canva.com/2tHw4/DAGrW92tHw4/7/0/0001-3681039969238197907.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20250726%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250726T231122Z&X-Amz-Expires=40792&X-Amz-Signature=f017bf9d34105d5fa1a95b34f2671b8b9326beee6fa7a8c908c5a9f0b6ccb3df&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27YTV%2520Apps.png&response-expires=Sun%2C%2027%20Jul%202025%2010%3A31%3A14%20GMT",
+  "tagline": "A custom app store for CasaOS to browse and install apps",
+  "overview": "Y-Store is a web-based custom app store designed for CasaOS users to easily discover, browse, and install applications.",
+  "category": [
+    "Utilities"
+  ],
+  "developer": {
+    "name": "Yaman",
+    "website": "",
+    "donate_text": "",
+    "donate_link": ""
+  },
+  "adaptor": {
+    "name": "Yaman",
+    "website": "",
+    "donate_text": "",
+    "donate_link": ""
+  },
+  "support": "",
+  "website": "",
+  "container": {
+    "image": "your-docker-image:0.1.0",
+    "shell": "sh",
+    "privileged": false,
+    "network_model": "bridge",
+    "web_ui": {
+      "http": "3000",
+      "path": "/"
+    },
+    "health_check": "",
+    "envs": [],
+    "ports": [
+      {
+        "container": "3000",
+        "host": "3000",
+        "type": "tcp",
+        "allocation": "automatic",
+        "configurable": "no",
+        "description": "Web UI port"
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/DATA/AppData/y-store",
+        "host": "/DATA/AppData/y-store",
+        "mode": "rw",
+        "allocation": "automatic",
+        "configurable": "no",
+        "description": "Persistent app data directory"
+      }
+    ],
+    "devices": [],
+    "constraints": {
+      "min_memory": 64,
+      "min_storage": 128
+    },
+    "restart_policy": "always",
+    "sysctls": [],
+    "cap_add": [],
+    "labels": [],
+    "host_name": "",
+    "cmd": []
+  },
+  "abilities": {
+    "notification": false,
+    "widgets": false,
+    "authentication": false,
+    "search": false,
+    "upnp": false
+  },
+  "tips": {
+    "before_install": []
+  },
+  "changelog": {
+    "latest_updates": "Initial release of Y-Store",
+    "url": ""
+  },
+  "latest_update_date": "2025-07-27"
+}
