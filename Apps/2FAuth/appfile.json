@@ -1,9 +1,9 @@
 {
 	"version": "2.0",
-	"title": "2FAuth",
-	"name": "2fauth",
-	"icon": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/2FAuth/icon.png",
-	"tagline": "A web app to manage your Two-Factor Authentication (2FA) accounts and generate their security codes",
+	"title": "My First App",
+	"name": "My First App",
+	"icon": "https://export-download.canva.com/2tHw4/DAGrW92tHw4/7/0/0001-3681039969238197907.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20250726%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250726T231122Z&X-Amz-Expires=40792&X-Amz-Signature=f017bf9d34105d5fa1a95b34f2671b8b9326beee6fa7a8c908c5a9f0b6ccb3df&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27YTV%2520Apps.png&response-expires=Sun%2C%2027%20Jul%202025%2010%3A31%3A14%20GMT",
+	"tagline": "My first app is a authenticator",
 	"overview": "2FAuth is a web based self-hosted alternative to One Time Passcode (OTP) generators like Google Authenticator, designed for both mobile and desktop.",
 	"thumbnail": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/2FAuth/thumbnail.png",
 	"screenshots": [
