@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CasaOS Custom App Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        h1 {
+            text-align: center;
+            color: #2d3748;
+            margin-bottom: 32px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+        .app-card {
+            background: #f9fafb;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: box-shadow 0.2s;
+        }
+        .app-card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+        }
+        .app-icon {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 16px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: #e2e8f0;
+        }
+        .app-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #22223b;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        .app-desc {
+            font-size: 0.95em;
+            color: #4a5568;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        .install-btn {
+            background: #3182ce;
+            color: #fff;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.2s;
+        }
+        .install-btn:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CasaOS Custom App Store</h1>
+        <div class="grid" id="appGrid"></div>
+    </div>
+    <script>
+        // Fetch app data from local API and render
+        async function fetchAndRenderApps() {
+            try {
+                const response = await fetch('http://localhost:3000/apps');
+                if (!response.ok) throw new Error('Network response was not ok');
+                const apps = await response.json();
+                renderApps(apps);
+            } catch (error) {
+                document.getElementById('appGrid').innerHTML = `<div style="color:red;text-align:center;">Failed to load apps: ${error.message}</div>`;
+            }
+        }
+
+        // Parser and grid renderer
+        function renderApps(apps) {
+            const grid = document.getElementById('appGrid');
+            grid.innerHTML = '';
+            apps.forEach(app => {
+                const card = document.createElement('div');
+                card.className = 'app-card';
+                card.innerHTML = `
+                    <img src="${app.icon}" alt="${app.name}" class="app-icon" />
+                    <div class="app-title">${app.name}</div>
+                    <div class="app-desc">${app.desc}</div>
+                    <button class="install-btn" onclick='installApp(${JSON.stringify(app)})'>Install</button>
+
+                `;
+                grid.appendChild(card);
+            });
+        }
+        function installApp(app) {
+  fetch('http://localhost:3000/install-app', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      name: app.name,
+      image: app.image,
+      icon: app.icon,
+      scheme: "http",
+      index: "/",
+      port_map: [
+        {
+          host_port: "5901",
+          container_port: "5901"
+        }
+      ]
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    alert(`${app.name} installed!`);
+  })
+  .catch(err => {
+    alert(`Failed to install ${app.name}: ${err.message}`);
+  });
+}
+
+        // Initialize grid
+        fetchAndRenderApps();
+    </script>
+</body>
+</html>

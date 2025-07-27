@@ -1,0 +1,15 @@
+[
+  {
+    "name": "Nextcloud",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/6/60/Nextcloud_Logo.svg",
+    "desc": "A safe home for all your data and files.",
+    "install": "#"
+  },
+
+    {
+      "name": "Calendar",
+      "icon": "https://cdn-icons-png.flaticon.com/512/1869/1869397.png",
+      "desc": "A simple calendar app to manage your events and schedules.",
+      "install": "#"
+    }
+  ]
